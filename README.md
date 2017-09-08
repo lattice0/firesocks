@@ -12,4 +12,7 @@ Run:
 
 xhost +local:root && sudo docker run -it --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --name firesocks firesocks
 
+Scripts.txt contains the build and run scripts so you can `cat scripts.txt` and copy them to modify little things and paste again.
 
+TODO: expose ports properly to connect to socks. For now you should do it yourself or use docker-compose with the container that connects through socks
+TODO: remove firefox 'first run' and add blank startup page
