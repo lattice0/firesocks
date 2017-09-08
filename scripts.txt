@@ -1,7 +1,12 @@
 #Run 
 
-xhost +local:root && sudo docker run -it --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --name firesocks firesocks
+#--net="host" will make you access every port on the host, which will make you able to use socks proxy opened on localhost
 
+xhost +local:root && sudo docker run -it --rm --net="host" -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --name firesocks firesocks
+
+To modify any of the ENVs setted in the Dockerfile, just add -e MY_ENV=MY_VALUE. Example:
+
+-e SOCKS_PORT=1234
 
 #Build
 

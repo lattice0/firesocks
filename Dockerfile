@@ -4,6 +4,11 @@
 
 FROM ubuntu:zesty
 
+ENV SOCKS_IP=127.0.0.1
+ENV SOCKS_PORT=1080
+ENV SOCKS_VERSION=5
+ENV SOCKS_REMOTE_DNS=true
+
 RUN apt-get update && apt-get install -y wget bzip2 libgtk-3-0 libdbus-glib-1-2 libxt6
 
 WORKDIR /home
@@ -21,17 +26,6 @@ pref("general.config.filename", "mozilla.cfg");\n\
 pref("general.config.obscure_value", 0);'\
 >> firefox/defaults/pref/autoconfig.js
 
-#You should edit only THIS 'run' command:
-
-RUN touch firefox/mozilla.cfg \
-&& echo '//\n\
-pref("network.proxy.socks_remote_dns", true);\n\
-pref("network.proxy.socks", "127.0.0.1");\n\
-pref("network.proxy.socks_port", 12345);\n\
-pref("network.proxy.socks_version", 5);\n\
-pref("network.proxy.type", 1);' \
->> firefox/mozilla.cfg
-
 #Clean everything
 RUN apt-get remove --purge -y wget bzip2 \
 	&& apt autoremove -y \
@@ -39,4 +33,17 @@ RUN apt-get remove --purge -y wget bzip2 \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT /home/firefox/firefox
+#You should edit only THIS command (and the ENVs above if needed):
+
+CMD touch firefox/mozilla.cfg \
+&& echo "//\n\
+pref('network.proxy.socks_remote_dns', $SOCKS_REMOTE_DNS);\n\
+pref('network.proxy.socks', \"$SOCKS_IP\");\n\
+pref('network.proxy.socks_port', $SOCKS_PORT);\n\
+pref('network.proxy.socks_version', $SOCKS_VERSION);\n\
+pref('network.proxy.type', 1);\n\
+pref('browser.startup.page', 0);\n\
+pref('datareporting.policy.dataSubmissionEnabled', false);\n\
+pref('browser.startup.homepage_override.mstone', \"ignore\");" \
+>> firefox/mozilla.cfg \
+&& /home/firefox/firefox
