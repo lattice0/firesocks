@@ -1,0 +1,8 @@
+#Run 
+
+xhost +local:root && sudo docker run -it --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --name firesocks firesocks
+
+
+#Build
+
+sudo docker build -t firesocks .
