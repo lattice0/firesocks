@@ -10,7 +10,9 @@ I've make this because I constantly need to connect to a place with slow connect
 
 # Run:
 
-`xhost +local:root && sudo docker run -it --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --name firesocks firesocks`
+`xhost +local:root && sudo docker run -it --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --name firesocks firesocks && xhost -`
+
+Important: verify the implications of `xhost +local:root`. I've made it in a way that its effect is removed after th docker containers stops running. 
 
 To modify any of the ENVs setted in the Dockerfile, just add `-e MY_ENV=MY_VALUE`. Example:
 
