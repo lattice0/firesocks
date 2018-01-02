@@ -18,4 +18,6 @@ To modify any of the ENVs setted in the Dockerfile, just add `-e MY_ENV=MY_VALUE
 
 `-e SOCKS_PORT=1234`
 
+(default is 1080, the common port for sock connections)
+
 Scripts.txt contains the build and run scripts so you can `cat scripts.txt` and copy them to modify little things and paste again.
