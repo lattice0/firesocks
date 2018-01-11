@@ -7,6 +7,9 @@ FROM ubuntu:zesty
 ENV SOCKS_IP=127.0.0.1
 ENV SOCKS_PORT=1080
 ENV SOCKS_VERSION=5
+#I couldn't find a way to set the username and password in firefox yet, but I'm gonna leave this here
+#ENV SOCKS_USERNAME=""
+#ENV SOCKS_PASSWORD="" 
 ENV SOCKS_REMOTE_DNS=true
 
 RUN apt-get update && apt-get install -y wget bzip2 libgtk-3-0 libdbus-glib-1-2 libxt6
