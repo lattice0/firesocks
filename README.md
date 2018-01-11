@@ -5,7 +5,10 @@ The add-ons for firefox will toggle SOCKS support for the entire browser, not ju
 I've make this because I constantly need to connect to a place with slow connection through SOCKS, but I don't want to redirect all my tabs traffic.
 
 # Build:
-
+```
+git clone https://github.com/lucaszanella/firesocks
+cd firesocks
+```
 `sudo docker build -t firesocks .`
 
 # Run:
