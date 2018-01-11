@@ -8,8 +8,8 @@ I've make this because I constantly need to connect to a place with slow connect
 ```
 git clone https://github.com/lucaszanella/firesocks
 cd firesocks
+sudo docker build -t firesocks .
 ```
-`sudo docker build -t firesocks .`
 
 # Run:
 
