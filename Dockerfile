@@ -2,7 +2,7 @@
 #To understand firefox configuration: https://developer.mozilla.org/en-US/Firefox/Enterprise_deployment
 #LucasZanella.com
 
-FROM ubuntu:zesty
+FROM ubuntu:latest
 
 ENV SOCKS_IP=127.0.0.1
 ENV SOCKS_PORT=1080
