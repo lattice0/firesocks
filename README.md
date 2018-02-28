@@ -27,7 +27,7 @@ Adding `--net="host"` will make you access every port on the host, which will ma
 
 # Example with custom socks port and address
 
-`xhost +local:root && sudo docker run -it --rm --net="host -e DISPLAY -e SOCKS_IP=192.168.1.3 -e SOCKS_PORT=1234 -v /tmp/.X11-unix:/tmp/.X11-unix --name firesocks firesocks && xhost -`
+`xhost +local:root && sudo docker run -it --rm --net="host" -e DISPLAY -e SOCKS_IP=192.168.1.3 -e SOCKS_PORT=1234 -v /tmp/.X11-unix:/tmp/.X11-unix --name firesocks firesocks && xhost -`
 
 # TODO
 
