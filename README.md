@@ -13,7 +13,7 @@ sudo docker build -t firesocks .
 
 # Run:
 
-`xhost +local:root && sudo docker run -it --rm --net="host -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --name firesocks firesocks && xhost -`
+`xhost +local:root && sudo docker run -it --rm --net="host" -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --name firesocks firesocks && xhost -`
 
 Important: verify the implications of `xhost +local:root`. I've made it in a way that its effect is removed after th docker containers stops running. 
 
